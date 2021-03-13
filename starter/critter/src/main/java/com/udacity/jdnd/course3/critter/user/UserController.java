@@ -69,7 +69,8 @@ public class UserController {
 
     @PutMapping("/employee/{employeeId}")
     public void setAvailability(@RequestBody Set<DayOfWeek> daysAvailable, @PathVariable Long employeeId) {
-        userService.setAvailabilityForEmployee(daysAvailable, employeeId);
+//        userService.setAvailabilityForEmployee(daysAvailable, employeeId);
+        throw new UnsupportedOperationException();
     }
 
     @GetMapping("/employee/availability")

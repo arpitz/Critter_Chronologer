@@ -22,14 +22,14 @@ public interface UserRepository extends CrudRepository<User, Long> {
     @Query("select u from User u where :id member of u.petIds")
     public User getOwnerByPet(Long id);
 
-    @Transactional
-    @Modifying
-    @Query("update Employee e set e.daysAvailable = :daysAvailable where e.id=:id")
-//    @Query(value = "update employee_days_available set " +
-//            "days_available = :daysAvailable where employee_id = :id", nativeQuery = true)
-    public void setAvailabilityForEmployee(Set<DayOfWeek> daysAvailable, Long id);
+//    @Transactional
+//    @Modifying
+//    @Query("update Employee e set e.daysAvailable = :daysAvailable where e.id=:id")
+////    @Query(value = "update employee_days_available set " +
+////            "days_available = :daysAvailable where employee_id = :id", nativeQuery = true)
+//    public void setAvailabilityForEmployee(Set<DayOfWeek> daysAvailable, Long id);
 
-    @Query("update Employee e set e.daysAvailable = null where e.id=:id")
-    public void deleteAvailability(Long id);
+//    @Query("update Employee e set e.daysAvailable = null where e.id=:id")
+//    public void deleteAvailability(Long id);
 
 }

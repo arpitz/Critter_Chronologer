@@ -43,10 +43,10 @@ public class UserService {
         return userRepository.getOwnerByPet(petId);
     }
 
-    public void setAvailabilityForEmployee(Set<DayOfWeek> daysAvailable, Long employeeId){
-        userRepository.deleteAvailability(employeeId);
-        userRepository.setAvailabilityForEmployee(daysAvailable, employeeId);
-    }
+//    public void setAvailabilityForEmployee(Set<DayOfWeek> daysAvailable, Long employeeId){
+//        userRepository.deleteAvailability(employeeId);
+//        userRepository.setAvailabilityForEmployee(daysAvailable, employeeId);
+//    }
 
     public void deleteUser(Long id){
         userRepository.deleteById(id);

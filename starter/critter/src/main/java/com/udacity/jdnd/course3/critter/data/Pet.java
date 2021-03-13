@@ -15,7 +15,7 @@ import java.util.List;
 @Table(name="Critter_Pet")
 public class Pet {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private PetType type;
     private String name;
@@ -24,5 +24,8 @@ public class Pet {
     private String notes;
 
     @OneToMany(mappedBy = "pet")
-    private List<Schedule> scheduleList;
+    private List<Schedule> schedules;
+
+    @OneToOne
+    private User user;
 }

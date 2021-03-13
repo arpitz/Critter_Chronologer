@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Repository
 @Transactional
@@ -14,8 +15,9 @@ public class ScheduleRepository implements ScheduleRepositoryInterface{
     EntityManager entityManager;
 
     @Override
-    public void persist(Schedule schedule) {
+    public Schedule persist(Schedule schedule) {
         entityManager.persist(schedule);
+        return schedule;
     }
 
     @Override
@@ -32,5 +34,10 @@ public class ScheduleRepository implements ScheduleRepositoryInterface{
     public void delete(Long id) {
         Schedule schedule = entityManager.find(Schedule.class, id);
         entityManager.remove(schedule);
+    }
+
+    @Override
+    public List<Schedule> findAll() {
+        return entityManager.createQuery("from Schedule").getResultList();
     }
 }

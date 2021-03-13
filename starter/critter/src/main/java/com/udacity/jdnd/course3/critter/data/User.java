@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor
 @Entity
@@ -13,7 +14,15 @@ import javax.persistence.*;
 @Table(name="Critter_User")
 public class User {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+
+//    For Customer
+    @OneToMany(mappedBy = "user")
+    private List<Pet> pets;
+
+//    For Employee
+    @OneToMany(mappedBy = "user")
+    private List<Schedule> schedules;
 }

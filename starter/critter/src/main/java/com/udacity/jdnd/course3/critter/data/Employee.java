@@ -22,7 +22,4 @@ public class Employee extends User{
 
     @ElementCollection
     private Set<DayOfWeek> daysAvailable;
-
-    @OneToMany(mappedBy = "employee")
-    private List<Schedule> scheduleList;
 }
