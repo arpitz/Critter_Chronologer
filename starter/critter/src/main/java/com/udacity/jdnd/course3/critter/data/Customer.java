@@ -15,6 +15,7 @@ import java.util.List;
 @Entity
 @Table(name="Critter_Customer")
 public class Customer extends User{
+    private String type="customer";
     private String phoneNumber;
     private String notes;
 

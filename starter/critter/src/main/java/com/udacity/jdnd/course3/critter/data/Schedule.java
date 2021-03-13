@@ -16,10 +16,12 @@ public class Schedule {
     @GeneratedValue
     private Long id;
 
-    @OneToMany(mappedBy = "schedule_emp")
+    @OneToOne
+    @JoinColumn(name = "employee_id", nullable = false)
     private Employee employee;
 
-    @OneToMany(mappedBy = "schedule_pet")
+    @OneToOne
+    @JoinColumn(name = "pet_id", nullable = false)
     private Pet pet;
     private LocalDate date;
 }
