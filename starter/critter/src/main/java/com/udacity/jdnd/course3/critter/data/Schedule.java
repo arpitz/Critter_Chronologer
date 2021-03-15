@@ -19,15 +19,14 @@ public class Schedule {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
-    private User user;
+    @ManyToMany
+    private List<Employee> employees;
 
-    @OneToOne
-    private Pet pet;
+    @ManyToMany
+    private List<Pet> pets;
+
     private LocalDate date;
+
     @ElementCollection
     private Set<EmployeeSkill> activities;
-
-    private List<Long> employeeIds;
-    private List<Long> petIds;
 }

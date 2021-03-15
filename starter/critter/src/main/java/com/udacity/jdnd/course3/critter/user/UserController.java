@@ -61,23 +61,23 @@ public class UserController {
         return employeeDTOList;
     }
 
-//    -- Done Above
-    @PostMapping("/employee/{employeeId}")
-    public EmployeeDTO getEmployee(@PathVariable long employeeId) {
-        throw new UnsupportedOperationException();
+    @GetMapping("/employee/{employeeId}")
+    public EmployeeDTO getEmployee(@PathVariable Long employeeId) {
+        User user = userService.findUserById(employeeId);
+        return convertToEmployeeDTO(user);
     }
 
     @PutMapping("/employee/{employeeId}")
     public void setAvailability(@RequestBody Set<DayOfWeek> daysAvailable, @PathVariable Long employeeId) {
-//        userService.setAvailabilityForEmployee(daysAvailable, employeeId);
-        throw new UnsupportedOperationException();
+        userService.setAvailabilityForEmployee(daysAvailable, employeeId);
     }
 
     @GetMapping("/employee/availability")
-    public List<EmployeeDTO> findEmployeesForService(@RequestBody EmployeeRequestDTO employeeDTO) {
-        throw new UnsupportedOperationException();
+    public List<EmployeeDTO> findEmployeesForService(@RequestBody EmployeeRequestDTO employeeRequestDTO) {
+        List<User> userList = userService.findEmployeesForService(employeeRequestDTO);
+        return convertToEmployeeDTOList(userList);
     }
-// Shift to service
+
     private List<CustomerDTO> convertToCustomerDTOList(List<User> users) {
         List<CustomerDTO> customerDTOList = new ArrayList<>();
         for (User user: users) {

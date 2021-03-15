@@ -1,6 +1,8 @@
 package com.udacity.jdnd.course3.critter.repository;
 
+import com.udacity.jdnd.course3.critter.data.Employee;
 import com.udacity.jdnd.course3.critter.data.User;
+import com.udacity.jdnd.course3.critter.user.EmployeeSkill;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -13,6 +15,9 @@ import java.util.Set;
 
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
+
+    Employee findEmployeeById(Long id);
+
     @Query("select u from User u where u.type='customer'")
     public List<User> findAllCustomers();
 
@@ -22,14 +27,8 @@ public interface UserRepository extends CrudRepository<User, Long> {
     @Query("select u from User u where :id member of u.petIds")
     public User getOwnerByPet(Long id);
 
-//    @Transactional
-//    @Modifying
-//    @Query("update Employee e set e.daysAvailable = :daysAvailable where e.id=:id")
-////    @Query(value = "update employee_days_available set " +
-////            "days_available = :daysAvailable where employee_id = :id", nativeQuery = true)
-//    public void setAvailabilityForEmployee(Set<DayOfWeek> daysAvailable, Long id);
-
-//    @Query("update Employee e set e.daysAvailable = null where e.id=:id")
-//    public void deleteAvailability(Long id);
-
+    @Query("select u from User u " +
+            "where :skill member of u.skills AND " +
+            ":day member of u.daysAvailable")
+    public List<User> findEmployeesForService(EmployeeSkill skill, DayOfWeek day);
 }

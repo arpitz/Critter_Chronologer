@@ -21,8 +21,4 @@ public class User {
 //    For Customer
     @OneToMany(mappedBy = "user")
     private List<Pet> pets;
-
-//    For Employee
-    @OneToMany(mappedBy = "user")
-    private List<Schedule> schedules;
 }

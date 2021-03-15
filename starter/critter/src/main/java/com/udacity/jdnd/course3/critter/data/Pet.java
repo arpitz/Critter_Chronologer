@@ -23,9 +23,6 @@ public class Pet {
     private LocalDate birthDate;
     private String notes;
 
-    @OneToMany(mappedBy = "pet")
-    private List<Schedule> schedules;
-
-    @OneToOne
+    @ManyToOne
     private User user;
 }
